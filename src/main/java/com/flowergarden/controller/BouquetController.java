@@ -3,6 +3,7 @@ package com.flowergarden.controller;
 import com.flowergarden.model.bouquet.Bouquet;
 import com.flowergarden.model.flowers.GeneralFlower;
 import com.flowergarden.service.BouquetService;
+import com.flowergarden.service.ReduceFreshnessResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -48,10 +49,10 @@ public class BouquetController {
 	@RequestMapping(value = "/bouquet/{id}/unfresh",
 			produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.PUT)
 	public ResponseEntity<Bouquet> reduceFreshness(@PathVariable("id") int id) {
-		Map<Integer, String> responseMap = bouquetService.reduceFreshness(id);
-		if(responseMap.isEmpty())
+		List<ReduceFreshnessResponse> responseList = bouquetService.reduceFreshness(id);
+		if(responseList.isEmpty())
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
-		return  new ResponseEntity(responseMap, HttpStatus.OK);
+		return  new ResponseEntity(responseList, HttpStatus.OK);
 	}
 
 }
