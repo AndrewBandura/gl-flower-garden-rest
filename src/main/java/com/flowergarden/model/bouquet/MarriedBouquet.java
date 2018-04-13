@@ -4,29 +4,20 @@ import com.flowergarden.model.flowers.Flower;
 import com.flowergarden.model.flowers.GeneralFlower;
 import lombok.Data;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 @Data
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
 public class MarriedBouquet implements Bouquet<GeneralFlower> {
 
-    @XmlElement
     int id;
 
     private String name;
 
-    @XmlElement
     private float assemblePrice;
 
-    @XmlElement
     private List<GeneralFlower> flowerList = new ArrayList<>();
 
     public MarriedBouquet() {

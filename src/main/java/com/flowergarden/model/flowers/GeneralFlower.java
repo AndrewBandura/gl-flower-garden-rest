@@ -12,22 +12,17 @@ import javax.xml.bind.annotation.XmlElement;
 
 @Getter
 @Setter
-@XmlAccessorType(XmlAccessType.FIELD)
+
 public class GeneralFlower implements Flower<Integer>, Comparable<GeneralFlower> {
 
-    @XmlAttribute
     private int id;
 
-    @XmlAttribute
     String name;
 
-    @XmlElement
     FreshnessInteger freshness;
 
-    @XmlAttribute
     float price;
 
-    @XmlAttribute
     int lenght;
 
     Bouquet bouquet;

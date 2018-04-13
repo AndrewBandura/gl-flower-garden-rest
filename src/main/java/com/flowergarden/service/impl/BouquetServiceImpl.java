@@ -3,12 +3,10 @@ package com.flowergarden.service.impl;
 import com.flowergarden.dao.BouquetDao;
 import com.flowergarden.dao.FetchMode;
 import com.flowergarden.model.bouquet.Bouquet;
-import com.flowergarden.model.flowers.Flower;
 import com.flowergarden.model.flowers.GeneralFlower;
 import com.flowergarden.properties.FreshnessInteger;
 import com.flowergarden.service.BouquetService;
 import com.flowergarden.service.ReduceFreshnessResponse;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -71,6 +69,6 @@ public class BouquetServiceImpl implements BouquetService {
         if(bouquetOpt.isPresent()){
             return (List<GeneralFlower>)bouquetOpt.get().getFlowers();
         }
-        return new ArrayList<GeneralFlower>();
+        return new ArrayList<>();
     }
 }
