@@ -45,22 +45,22 @@ public class BouquetServiceImpl implements BouquetService {
         Bouquet bouquet = null;
 
         Optional<Bouquet> bouquetOpt = bouquetDao.read(bouquetId, FetchMode.EAGER);
-        if(bouquetOpt.isPresent()){
+        if (bouquetOpt.isPresent()) {
             bouquet = bouquetOpt.get();
-            for(Object flower: bouquet.getFlowers()){
-                int freshness = ((GeneralFlower)flower).getFreshness().getFreshness();
-                if(freshness > 0){
-                    ((GeneralFlower)flower).setFreshness(new FreshnessInteger(--freshness));
+            for (Object flower : bouquet.getFlowers()) {
+                int freshness = ((GeneralFlower) flower).getFreshness().getFreshness();
+                if (freshness > 0) {
+                    ((GeneralFlower) flower).setFreshness(new FreshnessInteger(--freshness));
                     responseList.add(new ReduceFreshnessResponse(((GeneralFlower) flower).getId(), true, ""));
-                    }
-                else {
+                } else {
                     responseList.add(new ReduceFreshnessResponse(((GeneralFlower) flower).getId(), false, ReduceFreshnessResponse.ERROR_MSG));
-                    }
                 }
             }
             bouquetDao.update(bouquet);
+        }
 
         return responseList;
+
     }
 
     @Override
